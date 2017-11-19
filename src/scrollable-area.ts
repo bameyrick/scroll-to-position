@@ -1,10 +1,12 @@
 import { AddTick } from 'tick-manager';
+import { GetViewportDetails } from 'viewport-details';
 import * as Easings from 'js-easing-functions';
 
 import { Position, IScrollableAreaOptions, IMergedOptions, Easing } from './models';
 import { USER_SCROLL_EVENTS } from './user-scroll-events';
 
 const win = window;
+const body = document.body;
 
 const defaultOptions: IScrollableAreaOptions = {
 	offset: [0, 0],
@@ -51,6 +53,21 @@ export class ScrollableArea {
 						this.ticking = true;
 						AddTick(this.tick.bind(this));
 					}
+
+					let scrollHeight;
+					let scrollWidth;
+
+					if (this.scrollContainer instanceof Window) {
+						const viewport = GetViewportDetails();
+						scrollWidth = body.offsetWidth - viewport.width;
+						scrollHeight = body.offsetHeight - viewport.heightCollapsedControls;
+					} else {
+						scrollWidth = this.scrollContainer.scrollWidth;
+						scrollHeight = this.scrollContainer.scrollHeight;
+					}
+
+					this.scrollTo[0] = Math.min(this.scrollTo[1], scrollWidth, 0);
+					this.scrollTo[1] = Math.min(this.scrollTo[1], scrollHeight, 0);
 
 					const distanceX = Math.abs(this.scrollFrom[0] - this.scrollTo[0]);
 					const distanceY = Math.abs(this.scrollFrom[1] - this.scrollTo[1]);
