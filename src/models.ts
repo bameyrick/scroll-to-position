@@ -7,8 +7,7 @@ export interface IScrollableArea {
 
 export interface IScrollableAreaOptions {
 	offset?: Position;
-	minDuration?: number;
-	maxDuration?: number;
+	duration?: DurationRange | number;
 	easing?: Easing;
 	cancelOnUserScroll?: boolean;
 	animate?: boolean;
@@ -20,14 +19,15 @@ export interface IOptions extends IScrollableAreaOptions {
 
 export interface IMergedOptions {
 	offset: Position;
-	minDuration: number;
-	maxDuration: number;
+	duration: DurationRange | number;
 	easing: Easing;
 	cancelOnUserScroll: boolean;
 	animate: boolean;
 }
 
 export type Position = [number, number];
+
+export type DurationRange = [number, number];
 
 export enum Easing {
 	easeInQuad = 'easeInQuad',

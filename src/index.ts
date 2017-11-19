@@ -18,6 +18,6 @@ export function ScrollTo(target: Position | HTMLElement, options?: IOptions): Pr
 			scrollableAreas.push(scrollableArea);
 		}
 
-		scrollableArea.class.ScrollToTarget(target, options);
+		scrollableArea.class.ScrollToTarget(target, options).then(resolve);
 	});
 }

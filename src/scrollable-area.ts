@@ -8,9 +8,8 @@ const win = window;
 
 const defaultOptions: IScrollableAreaOptions = {
 	offset: [0, 0],
-	minDuration: 200,
-	maxDuration: 5000,
-	easing: Easing.easeInOutBack,
+	duration: [200, 5000],
+	easing: Easing.easeInOutQuart,
 	cancelOnUserScroll: true,
 	animate: true,
 };
@@ -34,10 +33,7 @@ export class ScrollableArea {
 			target = [target.offsetLeft, target.offsetTop];
 		}
 
-		const { offset, easing, animate, minDuration, maxDuration, cancelOnUserScroll } = <IMergedOptions>Object.assign(
-			defaultOptions,
-			options
-		);
+		const { offset, easing, animate, duration, cancelOnUserScroll } = <IMergedOptions>Object.assign(defaultOptions, options);
 
 		this.setScrollPosition();
 
@@ -60,7 +56,12 @@ export class ScrollableArea {
 					const distanceY = Math.abs(this.scrollFrom[1] - this.scrollTo[1]);
 					const maxDistance = Math.max(distanceX, distanceY);
 
-					this.duration = Math.round(Math.min(Math.max(Math.round(maxDistance), minDuration), maxDuration));
+					if (Array.isArray(duration)) {
+						this.duration = Math.round(Math.min(Math.max(Math.round(maxDistance), duration[0]), duration[1]));
+					} else {
+						this.duration = duration;
+					}
+
 					this.timestamp = Date.now();
 
 					this.resolve = resolve;
