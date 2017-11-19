@@ -21,3 +21,5 @@ export function ScrollTo(target: Position | HTMLElement, options?: IOptions): Pr
 		scrollableArea.class.ScrollToTarget(target, options).then(resolve);
 	});
 }
+
+export { Position, IOptions } from './models';
