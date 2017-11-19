@@ -1,0 +1,8 @@
+node_modules/
+*.log
+lib/
+src/
+tsconfig.json
+tslint.json
+.gitignore
+.editorconfig
