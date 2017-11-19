@@ -14,7 +14,7 @@ export interface IScrollableAreaOptions {
 }
 
 export interface IOptions extends IScrollableAreaOptions {
-	scrollContainer: HTMLElement | Window;
+	scrollContainer?: HTMLElement | Window;
 }
 
 export interface IMergedOptions {
