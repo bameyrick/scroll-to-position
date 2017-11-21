@@ -59,6 +59,7 @@ When calling ScrollTo you can provide an options object, with values to override
 | easing | string | The easing function the animation will use. The easing's available can be seein in my js-easing-functions repo (https://github.com/bameyrick/js-easing-functions) | https://github.com/bameyrick/js-easing-functions |
 | cancelOnUserScroll | boolean | Whether the scroll animation should stop when the user scrolls | true | 
 | animate | boolean | Whether ScrollTo should animate to the target, or jump straight there with no animation | true |
+| autoDurationMultiplier | number | If duration is to picked automatically (between DurationRange), multiply the distance to travel by this value to get the duration | 2 |
 
 ### Example of providing options
 ```javascript

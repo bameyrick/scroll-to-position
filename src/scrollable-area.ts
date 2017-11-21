@@ -14,6 +14,7 @@ const defaultOptions: IScrollableAreaOptions = {
 	easing: Easing.easeInOutQuart,
 	cancelOnUserScroll: true,
 	animate: true,
+	autoDurationMultiplier: 2,
 };
 
 export class ScrollableArea {
@@ -35,7 +36,7 @@ export class ScrollableArea {
 			target = [target.offsetLeft, target.offsetTop];
 		}
 
-		const { offset, easing, animate, duration, cancelOnUserScroll } = <IMergedOptions>Object.assign(defaultOptions, options);
+		const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier } = <IMergedOptions>Object.assign(defaultOptions, options);
 
 		this.setScrollPosition();
 
@@ -71,10 +72,12 @@ export class ScrollableArea {
 
 					const distanceX = Math.abs(this.scrollFrom[0] - this.scrollTo[0]);
 					const distanceY = Math.abs(this.scrollFrom[1] - this.scrollTo[1]);
-					const maxDistance = Math.max(distanceX, distanceY);
+					const autoDuration = Math.max(distanceX, distanceY) * autoDurationMultiplier;
+
+					console.log(autoDuration);
 
 					if (Array.isArray(duration)) {
-						this.duration = Math.round(Math.min(Math.max(Math.round(maxDistance), duration[0]), duration[1]));
+						this.duration = Math.round(Math.min(Math.max(Math.round(autoDuration), duration[0]), duration[1]));
 					} else {
 						this.duration = duration;
 					}
