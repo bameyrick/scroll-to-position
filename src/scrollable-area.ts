@@ -36,7 +36,10 @@ export class ScrollableArea {
 			target = [target.offsetLeft, target.offsetTop];
 		}
 
-		const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier } = <IMergedOptions>Object.assign(defaultOptions, options);
+		const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier } = <IMergedOptions>Object.assign(
+			defaultOptions,
+			options
+		);
 
 		this.setScrollPosition();
 

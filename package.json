@@ -25,8 +25,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "tslint --project",
       "prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser typescript --write",
+      "tslint --project",
       "git add"
     ],
     "*.json": [
