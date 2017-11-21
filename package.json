@@ -16,7 +16,7 @@
     "url": "git+https://github.com/bameyrick/scroll-to-position.git"
   },
   "scripts": {
-    "lint": "tslint --project src/*.ts",
+    "lint": "tslint --project",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
     "prepublishOnly": "rm -rf ./dist && rm -rf ./build && npm run lint && tsc -p ./ --outDir dist/ && rm -rf ./dist/demo",
