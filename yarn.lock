@@ -2725,9 +2725,9 @@ jest-validate@^21.1.0:
     leven "^2.1.0"
     pretty-format "^21.2.1"
 
-js-easing-functions@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/js-easing-functions/-/js-easing-functions-1.0.0.tgz#ef029671f5e627a6ef9a876207f25bd932825d7f"
+js-easing-functions@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/js-easing-functions/-/js-easing-functions-1.0.2.tgz#f07aa229881e1c5de8fc06d374d6904d41e83637"
 
 js-stringify@^1.0.1:
   version "1.0.2"
@@ -4630,9 +4630,9 @@ thunky@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-0.1.0.tgz#bf30146824e2b6e67b0f2d7a4ac8beb26908684e"
 
-tick-manager@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/tick-manager/-/tick-manager-1.0.2.tgz#9080f77009bf28e660494e7261aee036ec4da828"
+tick-manager@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tick-manager/-/tick-manager-1.0.3.tgz#843aee30f3ab53a42c67f4194faa21b03a5eb52a"
 
 time-stamp@^2.0.0:
   version "2.0.0"
@@ -4891,11 +4891,11 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-viewport-details@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/viewport-details/-/viewport-details-1.0.0.tgz#b5a9c5bb9b58812e36fa03b375b3e7054c865104"
+viewport-details@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/viewport-details/-/viewport-details-1.0.1.tgz#822833fa1fb904fcce6a96c14a74cb95bf6997d7"
   dependencies:
-    tick-manager "^1.0.2"
+    tick-manager "^1.0.3"
 
 vm-browserify@0.0.4:
   version "0.0.4"

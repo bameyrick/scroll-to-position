@@ -1,6 +1,6 @@
 {
   "name": "scroll-to-position",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Animate scroll to either an x, y, or x and y position in any scrollable viewport with customisable easing",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -19,7 +19,7 @@
     "lint": "tslint --project src/*.ts",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
-    "prepublishOnly": "npm run lint && tsc -p ./ --outDir dist/",
+    "prepublishOnly": "rm -rf ./dist && rm -rf ./build && npm run lint && tsc -p ./ --outDir dist/ && rm -rf ./dist/demo",
     "postcommit": "npm run prepublishOnly",
     "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
@@ -63,8 +63,8 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "js-easing-functions": "^1.0.0",
-    "tick-manager": "^1.0.2",
-    "viewport-details": "^1.0.0"
+    "js-easing-functions": "^1.0.2",
+    "tick-manager": "^1.0.3",
+    "viewport-details": "^1.0.1"
   }
 }
