@@ -77,8 +77,6 @@ export class ScrollableArea {
 					const distanceY = Math.abs(this.scrollFrom[1] - this.scrollTo[1]);
 					const autoDuration = Math.max(distanceX, distanceY) * autoDurationMultiplier;
 
-					console.log(autoDuration);
-
 					if (Array.isArray(duration)) {
 						this.duration = Math.round(Math.min(Math.max(Math.round(autoDuration), duration[0]), duration[1]));
 					} else {
