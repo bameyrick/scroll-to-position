@@ -70,7 +70,7 @@ export class ScrollableArea {
 						scrollHeight = this.scrollContainer.scrollHeight;
 					}
 
-					this.scrollTo[0] = Math.max(Math.min(this.scrollTo[1], scrollWidth), 0);
+					this.scrollTo[0] = Math.max(Math.min(this.scrollTo[0], scrollWidth), 0);
 					this.scrollTo[1] = Math.max(Math.min(this.scrollTo[1], scrollHeight), 0);
 
 					const distanceX = Math.abs(this.scrollFrom[0] - this.scrollTo[0]);
