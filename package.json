@@ -1,6 +1,6 @@
 {
   "name": "scroll-to-position",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Animate scroll to either an x, y, or x and y position in any scrollable viewport with customisable easing",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
