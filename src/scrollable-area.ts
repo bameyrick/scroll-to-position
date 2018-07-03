@@ -19,7 +19,7 @@ const defaultOptions: IScrollableAreaOptions = {
 
 export class ScrollableArea {
 	private ticking: boolean = false;
-	private scrolling: boolean = false;
+	private _scrolling: boolean = false;
 	private scrollFrom: Position;
 	private scrollTo: Position;
 	private duration: number;
@@ -99,6 +99,15 @@ export class ScrollableArea {
 				}
 			}
 		});
+	}
+
+	private get scrolling(): boolean {
+		return this._scrolling;
+	}
+
+	private set scrolling(scrolling: boolean) {
+		this._scrolling = scrolling;
+		(<any>win).autoScrolling = scrolling;
 	}
 
 	private setScrollPosition(): void {
