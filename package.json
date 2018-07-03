@@ -1,70 +1,63 @@
 {
-  "name": "scroll-to-position",
-  "version": "1.0.9",
-  "description": "Animate scroll to either an x, y, or x and y position in any scrollable viewport with customisable easing",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
-  "author": "Ben Meyrick <bameyrick@gmail.com>",
-  "license": "MIT",
-  "keywords": [
-    "scroll",
-    "easing",
-    "animated"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bameyrick/scroll-to-position.git"
-  },
-  "scripts": {
-    "lint": "tslint --project src/*.ts",
-    "lint-staged": "lint-staged",
-    "precommit": "lint-staged",
-    "prepublishOnly": "rm -rf ./dist && rm -rf ./build && npm run lint && tsc -p ./ --outDir dist/ && rm -rf ./dist/demo",
-    "postcommit": "npm run prepublishOnly",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser typescript --write",
-      "tslint --project",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser json --write",
-      "git add"
-    ]
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "express": "^4.16.2",
-    "grunt": "^1.0.1",
-    "grunt-concurrent": "^2.3.1",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-pug": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-develop": "^0.4.0",
-    "grunt-nodemon": "^0.4.2",
-    "grunt-webpack": "^3.0.2",
-    "husky": "^0.14.3",
-    "lint-staged": "^5.0.0",
-    "load-grunt-configs": "^1.0.0",
-    "load-grunt-tasks": "^3.5.2",
-    "prettier": "^1.8.2",
-    "pug": "^2.0.0-rc.4",
-    "ts-loader": "^3.1.1",
-    "tslint": "^5.8.0",
-    "tslint-config-prettier": "^1.6.0",
-    "tslint-plugin-prettier": "^1.3.0",
-    "typescript": "^2.6.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-dev-server": "^2.9.4"
-  },
-  "dependencies": {
-    "js-easing-functions": "^1.0.2",
-    "tick-manager": "^1.0.3",
-    "viewport-details": "^1.0.1"
-  }
+	"name": "scroll-to-position",
+	"version": "1.1.0",
+	"description": "Animate scroll to either an x, y, or x and y position in any scrollable viewport with customisable easing",
+	"main": "./dist/src/index.js",
+	"types": "./dist/src/index.d.ts",
+	"author": "Ben Meyrick <bameyrick@gmail.com>",
+	"license": "MIT",
+	"keywords": ["scroll", "easing", "animated"],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bameyrick/scroll-to-position.git"
+	},
+	"scripts": {
+		"lint": "tslint --project src/*.ts",
+		"lint-staged": "lint-staged",
+		"precommit": "lint-staged",
+		"prepublishOnly": "rm -rf ./dist && rm -rf ./build && npm run lint && tsc -p ./ --outDir dist/ && rm -rf ./dist/demo",
+		"postcommit": "npm run prepublishOnly",
+		"tslint-check": "tslint-config-prettier-check ./tslint.json"
+	},
+	"lint-staged": {
+		"*.ts": [
+			"prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser typescript --write",
+			"tslint --project",
+			"git add"
+		],
+		"*.json": ["prettier --print-width 140 --use-tabs --single-quote --trailing-comma es5 --parser json --write", "git add"]
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.2",
+		"babel-preset-env": "^1.6.1",
+		"express": "^4.16.2",
+		"grunt": "^1.0.1",
+		"grunt-concurrent": "^2.3.1",
+		"grunt-contrib-clean": "^1.1.0",
+		"grunt-contrib-pug": "^1.0.0",
+		"grunt-contrib-watch": "^1.0.0",
+		"grunt-develop": "^0.4.0",
+		"grunt-nodemon": "^0.4.2",
+		"grunt-webpack": "^3.0.2",
+		"husky": "^0.14.3",
+		"lint-staged": "^5.0.0",
+		"load-grunt-configs": "^1.0.0",
+		"load-grunt-tasks": "^3.5.2",
+		"prettier": "^1.8.2",
+		"pug": "^2.0.0-rc.4",
+		"ts-loader": "^3.1.1",
+		"tslint": "^5.8.0",
+		"tslint-config-prettier": "^1.6.0",
+		"tslint-plugin-prettier": "^1.3.0",
+		"typescript": "^2.6.1",
+		"webpack": "^3.8.1",
+		"webpack-dev-middleware": "^1.12.0",
+		"webpack-dev-server": "^2.9.4"
+	},
+	"dependencies": {
+		"js-easing-functions": "^1.0.2",
+		"tick-manager": "^1.0.3",
+		"viewport-details": "^1.0.1"
+	}
 }
