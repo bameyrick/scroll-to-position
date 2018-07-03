@@ -68,3 +68,6 @@ ScrollTo([0, 100], {
   easing: 'easeInOutSine',
 });
 ```
+
+## Extras
+An `autoScroll` boolean is added to the window which you can use in your scroll event listeners to check if the window is being autoScrolled buy this package.
