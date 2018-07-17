@@ -53,6 +53,9 @@ export class ScrollableArea {
 			if (this.scrollFrom === this.scrollTo) {
 				resolve();
 			} else {
+				this.scrolling = true;
+				this.resolve = resolve;
+
 				if (animate) {
 					if (!this.ticking) {
 						this.ticking = true;
@@ -86,15 +89,13 @@ export class ScrollableArea {
 
 					this.timestamp = Date.now();
 
-					this.resolve = resolve;
-
-					this.scrolling = true;
-
 					if (cancelOnUserScroll) {
 						this.addEventListeners();
 					}
 				} else {
 					(<any>this.scrollContainer.scrollTo)(...this.scrollTo);
+
+					this.scrolling = false;
 
 					resolve();
 				}
