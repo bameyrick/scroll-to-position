@@ -57,11 +57,6 @@ export class ScrollableArea {
 				this.resolve = resolve;
 
 				if (animate) {
-					if (!this.ticking) {
-						this.ticking = true;
-						AddTick(this.tick.bind(this));
-					}
-
 					let scrollHeight;
 					let scrollWidth;
 
@@ -91,6 +86,11 @@ export class ScrollableArea {
 
 					if (cancelOnUserScroll) {
 						this.addEventListeners();
+					}
+
+					if (!this.ticking) {
+						this.ticking = true;
+						AddTick(this.tick.bind(this));
 					}
 				} else {
 					(<any>this.scrollContainer.scrollTo)(...this.scrollTo);
