@@ -38,11 +38,10 @@ export class ScrollableArea {
 			target = [target.offsetLeft, target.offsetTop];
 		}
 
-		const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier } = <IMergedOptions>Object.assign(
-			{},
-			defaultOptions,
-			options
-		);
+		const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier } = <IMergedOptions>{
+			...defaultOptions,
+			options,
+		};
 
 		this.setScrollPosition();
 
@@ -127,13 +126,13 @@ export class ScrollableArea {
 
 	private addEventListeners(): void {
 		USER_SCROLL_EVENTS.forEach(event => {
-			this.scrollContainer.addEventListener(event, this.cancelScroll.bind(this));
+			this.scrollContainer.addEventListener(event, this.cancelScroll);
 		});
 	}
 
 	private removeEventListeners(): void {
 		USER_SCROLL_EVENTS.forEach(event => {
-			this.scrollContainer.removeEventListener(event, this.cancelScroll.bind(this));
+			this.scrollContainer.removeEventListener(event, this.cancelScroll);
 		});
 	}
 
