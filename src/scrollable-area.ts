@@ -1,5 +1,6 @@
 import { AddTick } from 'tick-manager';
 import { GetViewportDetails } from 'viewport-details';
+import { PreventScrolling, ReEnableScrolling } from 'prevent-scrolling';
 import * as Easings from 'js-easing-functions';
 
 import { Position, IScrollableAreaOptions, IMergedOptions, Easing } from './models';
@@ -28,6 +29,7 @@ export class ScrollableArea {
 	private scrollY: number;
 	private easing: Function;
 	private resolve: Function;
+	private userScrollingPrevented: boolean = false;
 
 	constructor(private scrollContainer: HTMLElement | Window) {}
 
@@ -86,6 +88,9 @@ export class ScrollableArea {
 
 					if (cancelOnUserScroll) {
 						this.addEventListeners();
+					} else {
+						this.userScrollingPrevented = true;
+						PreventScrolling();
 					}
 
 					if (!this.ticking) {
@@ -95,9 +100,7 @@ export class ScrollableArea {
 				} else {
 					(<any>this.scrollContainer.scrollTo)(...this.scrollTo);
 
-					this.scrolling = false;
-
-					resolve();
+					this.onScrollEnd();
 				}
 			}
 		});
@@ -147,6 +150,18 @@ export class ScrollableArea {
 		}
 	}
 
+	private onScrollEnd(): void {
+		if (this.userScrollingPrevented) {
+			ReEnableScrolling();
+		}
+
+		this.removeEventListeners();
+
+		this.scrolling = false;
+
+		this.resolve();
+	}
+
 	private scroll(): void {
 		const elapsed = Date.now() - this.timestamp;
 
@@ -157,14 +172,10 @@ export class ScrollableArea {
 			x = this.calculateNextPosition(0, elapsed);
 			y = this.calculateNextPosition(1, elapsed);
 		} else {
-			this.scrolling = false;
-
 			x = this.scrollTo[0];
 			y = this.scrollTo[1];
 
-			this.removeEventListeners();
-
-			this.resolve();
+			this.onScrollEnd();
 		}
 
 		if (this.scrollContainer instanceof Window) {
