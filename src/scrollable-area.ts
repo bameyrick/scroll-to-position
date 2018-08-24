@@ -31,7 +31,11 @@ export class ScrollableArea {
 	private resolve: Function;
 	private userScrollingPrevented: boolean = false;
 
-	constructor(private scrollContainer: HTMLElement | Window) {}
+	constructor(private scrollContainer: HTMLElement | Window) {
+		// Hack to ensure event listeners are removed correctly and their functions retain context of this. See:
+		// https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind#answer-33386309
+		this.cancelScroll = this.cancelScroll.bind(this);
+	}
 
 	public ScrollToTarget(target: Position | HTMLElement, options?: IScrollableAreaOptions): Promise<void> {
 		if (!Array.isArray(target)) {
