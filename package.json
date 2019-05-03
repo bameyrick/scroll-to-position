@@ -17,7 +17,7 @@
     "lint": "tslint --project tslint.json",
     "lint-staged": "lint-staged",
     "precommit": "lint-staged",
-    "prepublishOnly": "yarn tidy-clean && yarn lint && tsc -p ./src --outDir dist/ && rm -rf ./dist/demo",
+    "prepublishOnly": "yarn tidy-clean && yarn lint && tsc ./src/* --outDir dist/ && rm -rf ./dist/demo",
     "postcommit": "npm run prepublishOnly",
     "tidy-clean": "rm -rf ./dist && rm -rf ./build"
   },
