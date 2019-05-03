@@ -1,29 +1,33 @@
 doctype html
 html
-	head
-		meta(charset='utf-8')
-		meta(name='viewport', content='width=device-width, initial-scale=1')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
 
-		title Scroll to Position Demo
+        title Scroll to Position Demo
 
-		style
-			include ./styles.css
-	body
-		- var i = 0
-		while i < 5000
-			.Block
-				.Block__number= i
-				.Block__line
-				.Block__line
-				.Block__line
-				.Block__line
-			- i += 50
-		.ScrollToControl
-			label.ScrollToControl__label Scroll To
-			input.ScrollToControl__input(type="number" min="0" max="5000" step="10")
-			button.ScrollToControl__button(type="button") Go
-		script
-			| document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js" defer></' + 'script>');
-			| document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':8080/js/index.js" defer></' + 'script>'); 
+        link(rel="stylesheet" href="/styles.css")
 
+        //- style
+        //-     include ./styles.css
+    body
+        - var i = 0
+        while i < 5000
+            .Block
+                .Block__number= i
+                .Block__line
+                .Block__line
+                .Block__line
+                .Block__line
+            - i += 50
+        .ScrollToControl
+            label.ScrollToControl__label Scroll To
+            input.ScrollToControl__input(type="number" min="0" max="5000" step="10")
+            button.ScrollToControl__button(type="button") Go
+        
+        script(src="/index.js")
+        
+        if debug
+            script
+                | document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js" defer></' + 'script>')
 

@@ -1,7 +1,6 @@
 *.log
 .DS_Store
 Thumbs.db
-automation/
 build/
 demo/
 dist/demo/
@@ -11,7 +10,6 @@ src/
 .babelrc
 .editorconfig
 .gitignore
-gruntfile.js
 tsconfig.json
 tslint.json
 webpack.config.js

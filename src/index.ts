@@ -4,22 +4,25 @@ import { ScrollableArea } from './scrollable-area';
 const scrollableAreas: IScrollableArea[] = [];
 
 export function ScrollTo(target: Position | HTMLElement, options?: IOptions): Promise<void> {
-	return new Promise(resolve => {
-		const scrollContainer = options ? options.scrollContainer || window : window;
+  return new Promise((resolve, reject) => {
+    const scrollContainer = options ? options.scrollContainer || window : window;
 
-		let scrollableArea = scrollableAreas.find(a => a.element === scrollContainer);
+    let scrollableArea = scrollableAreas.find(a => a.element === scrollContainer);
 
-		if (!scrollableArea) {
-			scrollableArea = <IScrollableArea>{
-				element: scrollContainer,
-				class: new ScrollableArea(scrollContainer),
-			};
+    if (!scrollableArea) {
+      scrollableArea = <IScrollableArea>{
+        element: scrollContainer,
+        class: new ScrollableArea(scrollContainer),
+      };
 
-			scrollableAreas.push(scrollableArea);
-		}
+      scrollableAreas.push(scrollableArea);
+    }
 
-		scrollableArea.class.ScrollToTarget(target, options).then(resolve);
-	});
+    scrollableArea.class
+      .ScrollToTarget(target, options)
+      .then(resolve)
+      .catch(reject);
+  });
 }
 
 export { Position, IOptions } from './models';
