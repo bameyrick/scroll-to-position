@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "yarn tidy-clean && yarn webpack-dev-server --host 0.0.0.0 --watch --config webpack.dev.babel.js",
+    "build": "yarn tidy-clean && yarn lint && tsc --p tsconfig.dist.json --outDir dist/",
     "netlify": "yarn tidy-clean && yarn webpack --config webpack.netlify.babel.js",
     "lint": "tslint --project tslint.json",
     "lint-staged": "lint-staged",
@@ -29,9 +30,7 @@
   },
   "husky": {
     "hooks": {
-      "precommit": "lint-staged",
-      "prepublishOnly": "yarn tidy-clean && yarn lint && tsc --p tsconfig.dist.json --outDir dist/ && rm -rf ./dist/demo",
-      "postcommit": "npm run prepublishOnly"
+      "precommit": "lint-staged"
     }
   },
   "devDependencies": {
