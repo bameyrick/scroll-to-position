@@ -2,6 +2,8 @@
 
 Animate scroll to either an x, y, or x and y position in any scrollable viewport with customisable easing.
 
+[**Demo**](https://scroll-to-position.netlify.com/)
+
 ## Install
 
 You can install via npm or yarn.
