@@ -16,9 +16,6 @@
     "netlify": "yarn tidy-clean && yarn webpack --config webpack.netlify.babel.js",
     "lint": "tslint --project tslint.json",
     "lint-staged": "lint-staged",
-    "precommit": "lint-staged",
-    "prepublishOnly": "yarn tidy-clean && yarn lint && tsc --p tsconfig.dist.json --outDir dist/ && rm -rf ./dist/demo",
-    "postcommit": "npm run prepublishOnly",
     "tidy-clean": "rm -rf ./dist && rm -rf ./build"
   },
   "lint-staged": {
@@ -29,6 +26,13 @@
     ],
     "*.json": ["prettier --print-width 140 --single-quote --trailing-comma es5 --parser json --write", "git add"],
     "*.scss": ["prettier --print-width 140 --single-quote --parser postcss --write", "sass-lint", "git add"]
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged",
+      "prepublishOnly": "yarn tidy-clean && yarn lint && tsc --p tsconfig.dist.json --outDir dist/ && rm -rf ./dist/demo",
+      "postcommit": "npm run prepublishOnly"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
