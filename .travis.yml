@@ -5,13 +5,13 @@ cache: yarn
 jobs:
   include:
   - stage: npm-bundle
-    script: yarn build && npm version $TRAVIS_BRANCH --allow-same-version -m
-      "chore - release version %s [skip ci]" --allow-empty
+    script: yarn build && npm version $TRAVIS_BRANCH --allow-same-version -m "chore
+      - release version %s [skip ci]" --allow-empty
     deploy:
     - provider: npm
       skip_cleanup: true
       email: bameyrick@gmail.com
       api_key:
-        secure: wOxnxRRtCSxAS88DpUGBjx4ktYo4UQVIAiAozo/AfbyaENuboQJ1THB1CZDRSHzERt7A62/2IB3mRjFj/PyghtYH1CiLojzE5qHSorGimjIzR2eBW2KSWUfBHe8beE5flo3yzh7HQ39yGO4cjY0jvr2dIaYHyU6QkdYPWpG1EN/TkPr4ZEaXAS8zWAzoi3+b4Ya+iHcr1wArblbykYzVuh2tmnJRNHWUdJmZg30965hb/jg8VdpeHQHRHttYdATfq/f09z6BLBOrwcyidE2o8R7s0QOVagnsisTb+EnsUTduueokRQZY1Een70+F0DJPubQ84/eVTxdBmA0vEess1NboBhHKG9Kd3Xbzg3+OlvE84XRrDBvI6AXwgSj40VsYmtNFTJqJCz/ad1LMW5BK6PNTVCIf9CbthZuYwRX9hNwWjoiauGzyh9Z8sfIxXU3pgdIDNtfk+hEjp2p4BqDwcrZ9myjKKDw90y8pxd9ZELEY5nxiIAbfLT1wNVoByNiqHykLOxQurYT7Zj1KefC4UPqRvcIv8VuaGDHpEqz0UW7EfOC7n0QH7vCLMxztXcyrOpxrDCvBGwk2sgK6+vImkPyb1iC29EuOTux1URtot4BK0YgyDl71PpjEVJIYgBXHCh2tW/LGtC7cuw7vMh+PhnIAP8U0Pw65LYteh+WrlDM=
+    secure: WGMbjMAig66glyIjb3zcDId9dQc2pVAHuEg1MKQL2rsz8xmhdr2hW0bNoZaEkJIH4F9+JE/Aluxl+Ove7SBQg7ni4q4qxPGfVujIfH8rC0pE9y3/ZPKZjl+jmfRg0z19iORr/yw0px3NSss1vyH/jYEi/kpGkRhAP1ewg8IvwAx3YipgDrsjJFprx5PSbeGR4xHdEolrV0AlbayybS6K1flc6NUAfCjvABXqzi1uIM3aAb0g71wd3FkyEHwxlK4qD8i9w8gRpODm8oqxK/4LMztD1WKTiVUo6uQ2FFuXU2nlQFIqA9WCAzeNaNh5OEbHjcGCU7vcaC5lHSqQ52zRdpNQxjzcJCsLvHSoOUQj4Z+WlE51v8Byq3/VvIEd8kKEHr1eUFx0W51QD1Wbma5fXK8PXychKWVeG9bnmXjL24s1g+KgPdj4nq+md0FUKZDsaT9UfJdOJG+mzUowOcd6HbfBQnKKnpmkuINcehxlKBSV7o3dEA3Ic2Syp+/Hu4Eb1uiptl9HeUCKOotCJ4S76IJ/ZpaZ2UAoJvbaq0gTLQH65FM8ZUvLN1WUutlMrGiXvP8LczMfYroonclfhrYl1JbarJ8OH7KDP4rjvi5Siw32tXVXpXKbqIDgxFhAAMvISmRAWnFRnt+iba6zQte6fmvY+VbdJRZ1wGr3PM81OVg=
       on:
         tags: true
