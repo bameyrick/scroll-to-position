@@ -6,7 +6,11 @@
   "types": "./dist/src/index.d.ts",
   "author": "Ben Meyrick <bameyrick@gmail.com>",
   "license": "MIT",
-  "keywords": ["scroll", "easing", "animated"],
+  "keywords": [
+    "scroll",
+    "easing",
+    "animated"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bameyrick/scroll-to-position.git"
@@ -17,7 +21,8 @@
     "netlify": "yarn tidy-clean && yarn webpack --config webpack.netlify.babel.js",
     "lint": "tslint --project tslint.json",
     "lint-staged": "lint-staged",
-    "tidy-clean": "rm -rf ./dist && rm -rf ./build"
+    "tidy-clean": "rm -rf ./dist && rm -rf ./build",
+    "dedupe-deps": "npx yarn-deduplicate yarn.lock && yarn"
   },
   "lint-staged": {
     "*.ts": [
@@ -25,8 +30,15 @@
       "tslint --project tslint.json",
       "git add"
     ],
-    "*.json": ["prettier --print-width 140 --single-quote --trailing-comma es5 --parser json --write", "git add"],
-    "*.scss": ["prettier --print-width 140 --single-quote --parser postcss --write", "sass-lint", "git add"]
+    "*.json": [
+      "prettier --print-width 140 --single-quote --trailing-comma es5 --parser json --write",
+      "git add"
+    ],
+    "*.scss": [
+      "prettier --print-width 140 --single-quote --parser postcss --write",
+      "sass-lint",
+      "git add"
+    ]
   },
   "husky": {
     "hooks": {
@@ -37,6 +49,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
+    "@types/node": "^12.6.8",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "chalk": "^2.4.2",
