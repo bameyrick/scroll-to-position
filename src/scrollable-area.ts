@@ -47,8 +47,8 @@ export class ScrollableArea {
       target = [
         target.offsetLeft - scrollContainerOffsetLeft,
         target.offsetTop - scrollContainerOffsetTop,
-        target.offsetLeft + target.offsetWidth,
-        target.offsetTop + target.offsetHeight,
+        target.offsetLeft + target.offsetWidth - scrollContainerOffsetLeft,
+        target.offsetTop + target.offsetHeight - scrollContainerOffsetTop,
       ];
     }
 
