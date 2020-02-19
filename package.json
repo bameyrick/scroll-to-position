@@ -21,7 +21,7 @@
     "netlify": "yarn tidy-clean && yarn webpack --config webpack.netlify.babel.js",
     "lint": "tslint --project tslint.json",
     "lint-staged": "lint-staged",
-    "tidy-clean": "rm -rf ./dist && rm -rf ./build",
+    "tidy-clean": "rimraf ./dist && rimraf ./build",
     "dedupe-deps": "npx yarn-deduplicate yarn.lock && yarn"
   },
   "lint-staged": {
@@ -70,6 +70,7 @@
     "postcss-url": "^8.0.0",
     "prettier": "^1.17.0",
     "pug-html-loader": "^1.1.5",
+    "rimraf": "^3.0.2",
     "sass-lint": "^1.13.1",
     "sass-loader": "^7.1.0",
     "ts-loader": "^5.4.5",
