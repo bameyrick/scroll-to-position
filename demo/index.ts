@@ -17,7 +17,7 @@ input.addEventListener('keyup', event => {
 const options: IOptions = {};
 
 animate.addEventListener('change', () => (options.animate = animate.checked));
-scrollIfNotInView.addEventListener('change', () => (options.scrollOnlyIfNotInView = scrollIfNotInView.checked));
+scrollIfNotInView.addEventListener('change', () => (options.onlyScrollIfNotInView = scrollIfNotInView.checked));
 
 function scroll(): void {
   const y = input.value ? parseInt(input.value, 10) : 0;

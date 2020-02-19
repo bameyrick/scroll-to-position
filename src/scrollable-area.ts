@@ -16,7 +16,7 @@ const defaultOptions: IScrollableAreaOptions = {
   cancelOnUserScroll: true,
   animate: true,
   autoDurationMultiplier: 2,
-  scrollOnlyIfNotInView: false,
+  onlyScrollIfNotInView: false,
 };
 
 export class ScrollableArea {
@@ -44,7 +44,7 @@ export class ScrollableArea {
       target = [target.offsetLeft, target.offsetTop];
     }
 
-    const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, scrollOnlyIfNotInView } = <IMergedOptions>{
+    const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, onlyScrollIfNotInView } = <IMergedOptions>{
       ...defaultOptions,
       ...options,
     };
@@ -58,7 +58,7 @@ export class ScrollableArea {
 
     let shouldScroll = true;
 
-    if (scrollOnlyIfNotInView) {
+    if (onlyScrollIfNotInView) {
       const rect = this.scrollContainer instanceof Window ? this.getWindowDomRect() : this.scrollContainer.getBoundingClientRect();
 
       const x = this.scrollTo[0];

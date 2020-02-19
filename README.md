@@ -86,13 +86,25 @@ When calling ScrollTo you can provide an options object, with values to override
 | cancelOnUserScroll     | boolean                                               | Whether the scroll animation should stop when the user scrolls                                                                                                                                                                                             | true                                             |
 | animate                | boolean                                               | Whether ScrollTo should animate to the target, or jump straight there with no animation                                                                                                                                                                    | true                                             |
 | autoDurationMultiplier | number                                                | If duration is to picked automatically (between DurationRange), multiply the distance to travel by this value to get the duration                                                                                                                          | 2                                                |
+| onlyScrollIfNotInView  | boolean                                               | Only scroll if the target is not within the viewport of the scrollable area.                                                                                                                                                                               | false                                            |
 
 ### Example of providing options
 
 ```javascript
 ScrollTo([0, 100], {
   duration: [300, 1000],
-  easing: 'easeInOutSine'
+  easing: 'easeInOutSine',
+});
+```
+
+Using the easing enum in TypeScript
+
+```typescript
+import { ScrollTo, Easing } from 'scroll-to-position';
+
+ScrollTo([0, 100], {
+  duration: [300, 1000],
+  easing: Easing.easeInQuad,
 });
 ```
 
