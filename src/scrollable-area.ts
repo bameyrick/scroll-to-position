@@ -59,12 +59,13 @@ export class ScrollableArea {
     let shouldScroll = true;
 
     if (onlyScrollIfNotInView) {
-      const rect = this.scrollContainer instanceof Window ? this.getWindowDomRect() : this.scrollContainer.getBoundingClientRect();
+      const { width, height } =
+        this.scrollContainer instanceof Window ? GetViewportDetails() : this.scrollContainer.getBoundingClientRect();
 
-      const x = this.scrollTo[0];
-      const y = this.scrollTo[1];
+      const x = this.scrollTo[0] - this.scrollX;
+      const y = this.scrollTo[1] - this.scrollY;
 
-      shouldScroll = x < rect.left || x > rect.right || y < rect.top || y > rect.bottom;
+      shouldScroll = x > width || x < 0 || y > height || y < 0;
     }
 
     return new Promise((resolve, reject) => {
@@ -213,25 +214,5 @@ export class ScrollableArea {
     } else {
       return from + this.easing(elapsed, 0, to - from, this.duration);
     }
-  }
-
-  private getWindowDomRect(): DOMRect {
-    const { width, height, scrollX, scrollY } = GetViewportDetails();
-
-    const rect: DOMRect = {
-      x: 0,
-      y: 0,
-      width,
-      height,
-      top: scrollY,
-      right: width + scrollX,
-      bottom: height + scrollY,
-      left: scrollX,
-      toJSON: () => {},
-    };
-
-    rect.toJSON = () => rect;
-
-    return rect;
   }
 }
