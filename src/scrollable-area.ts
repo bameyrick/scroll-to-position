@@ -40,10 +40,10 @@ export class ScrollableArea {
   }
 
   public ScrollToTarget(target: Position | HTMLElement, options?: IScrollableAreaOptions): Promise<void> {
-    if (!Array.isArray(target)) {
-      const scrollContainerOffsetLeft = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetLeft;
-      const scrollContainerOffsetTop = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetTop;
+    const scrollContainerOffsetLeft = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetLeft;
+    const scrollContainerOffsetTop = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetTop;
 
+    if (!Array.isArray(target)) {
       target = [
         target.offsetLeft - scrollContainerOffsetLeft,
         target.offsetTop - scrollContainerOffsetTop,
@@ -89,11 +89,11 @@ export class ScrollableArea {
 
         if (shouldScroll) {
           if (this.scrollTo[0] > this.scrollX && rightNotInView) {
-            this.scrollTo[0] = target[2] + offset[0] - width;
+            this.scrollTo[0] = target[2] + offset[0] - width - scrollContainerOffsetLeft;
           }
 
           if (this.scrollTo[1] > this.scrollY && bottomNotInView) {
-            this.scrollTo[1] = target[3] + offset[1] - height;
+            this.scrollTo[1] = target[3] + offset[1] - height - scrollContainerOffsetTop;
           }
         }
       }
