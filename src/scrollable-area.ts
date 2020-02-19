@@ -65,17 +65,29 @@ export class ScrollableArea {
       const x = this.scrollTo[0] - this.scrollX;
       const y = this.scrollTo[1] - this.scrollY;
 
-      const topInView = x > width || x < 0 || y > height || y < 0;
+      const leftNotInView = x > width || x < 0;
+      const topNotInView = y > height || y < 0;
 
       if (target.length === 2) {
-        shouldScroll = topInView;
+        shouldScroll = topNotInView || leftNotInView;
       } else {
         const right = target[2] + offset[0] - this.scrollX;
         const bottom = target[3] + offset[1] - this.scrollY;
 
-        const bottomInView = right > width || right < 0 || bottom > height || bottom < 0;
+        const rightNotInView = right > width || right < 0;
+        const bottomNotInView = bottom > height || bottom < 0;
 
-        shouldScroll = topInView || bottomInView;
+        shouldScroll = topNotInView || leftNotInView || bottomNotInView || rightNotInView;
+
+        if (shouldScroll) {
+          if (!rightNotInView) {
+            this.scrollTo[0] = target[2] + offset[0];
+          }
+
+          if (!bottomNotInView) {
+            this.scrollTo[1] = target[3] + offset[1];
+          }
+        }
       }
     }
 
