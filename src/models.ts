@@ -29,7 +29,7 @@ export interface IMergedOptions {
   onlyScrollIfNotInView: boolean;
 }
 
-export type Position = [number, number];
+export type Position = [number, number] | [number, number, number, number];
 
 export type DurationRange = [number, number];
 
