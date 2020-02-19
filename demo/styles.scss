@@ -15,17 +15,17 @@ body {
   border-bottom: 1px solid black;
 
   font-weight: bold;
-}
 
-.Block__number {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  &__number {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-.Block__line {
-  height: 10px;
-  border-bottom: 1px solid #ddd;
+  &__line {
+    height: 10px;
+    border-bottom: 1px solid #ddd;
+  }
 }
 
 .ScrollToControl {
@@ -36,34 +36,47 @@ body {
   padding: 20px;
 
   background: #aaa;
-}
 
-.ScrollToControl__label {
-  display: block;
-  font-weight: bold;
-}
+  &__label {
+    display: block;
+    font-weight: bold;
+  }
 
-.ScrollToControl__input {
-  display: block;
-  margin-top: 10px;
-  padding: 0.5em;
-  border: 0;
+  &__input {
+    display: block;
+    margin-top: 10px;
+    padding: 0.5em;
+    border: 0;
 
-  font-size: 20px;
-}
+    font-size: 20px;
+  }
 
-.ScrollToControl__button {
-  margin-top: 10px;
-  padding: 0.5em;
+  &__button {
+    margin-top: 10px;
+    padding: 0.5em;
 
-  border: 0;
-  border-radius: 0.25em;
+    border: 0;
+    border-radius: 0.25em;
 
-  background: #406f94;
-  color: #fff;
+    background: #406f94;
+    color: #fff;
 
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 
-  cursor: pointer;
+    cursor: pointer;
+  }
+
+  &__options {
+    margin: 10px 0 0;
+  }
+
+
+  &__summary {
+    cursor: pointer;
+  }
+
+  &__option {
+    cursor: pointer;
+  }
 }
