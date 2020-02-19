@@ -41,7 +41,15 @@ export class ScrollableArea {
 
   public ScrollToTarget(target: Position | HTMLElement, options?: IScrollableAreaOptions): Promise<void> {
     if (!Array.isArray(target)) {
-      target = [target.offsetLeft, target.offsetTop, target.offsetLeft + target.offsetWidth, target.offsetTop + target.offsetHeight];
+      const scrollContainerOffsetLeft = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetLeft;
+      const scrollContainerOffsetTop = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetTop;
+
+      target = [
+        target.offsetLeft - scrollContainerOffsetLeft,
+        target.offsetTop - scrollContainerOffsetTop,
+        target.offsetLeft + target.offsetWidth,
+        target.offsetTop + target.offsetHeight,
+      ];
     }
 
     const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, onlyScrollIfNotInView } = <IMergedOptions>{
@@ -53,11 +61,8 @@ export class ScrollableArea {
 
     this.easing = EasingFunctions[easing];
 
-    const scrollContainerOffsetLeft = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetLeft;
-    const scrollContainerOffsetTop = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetTop;
-
     this.scrollFrom = [this.scrollX, this.scrollY];
-    this.scrollTo = [target[0] + offset[0] - scrollContainerOffsetLeft, target[1] + offset[1] - scrollContainerOffsetTop];
+    this.scrollTo = [target[0] + offset[0], target[1] + offset[1]];
 
     let shouldScroll = true;
 
