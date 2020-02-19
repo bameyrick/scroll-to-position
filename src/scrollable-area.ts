@@ -53,8 +53,11 @@ export class ScrollableArea {
 
     this.easing = EasingFunctions[easing];
 
+    const scrollContainerOffsetLeft = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetLeft;
+    const scrollContainerOffsetTop = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetTop;
+
     this.scrollFrom = [this.scrollX, this.scrollY];
-    this.scrollTo = [target[0] + offset[0], target[1] + offset[1]];
+    this.scrollTo = [target[0] + offset[0] - scrollContainerOffsetLeft, target[1] + offset[1] - scrollContainerOffsetTop];
 
     let shouldScroll = true;
 
