@@ -80,12 +80,12 @@ export class ScrollableArea {
         shouldScroll = topNotInView || leftNotInView || bottomNotInView || rightNotInView;
 
         if (shouldScroll) {
-          if (!rightNotInView) {
-            this.scrollTo[0] = target[2] + offset[0];
+          if (!leftNotInView && rightNotInView) {
+            this.scrollTo[0] = right - width;
           }
 
-          if (!bottomNotInView) {
-            this.scrollTo[1] = target[3] + offset[1];
+          if (!topNotInView && bottomNotInView) {
+            this.scrollTo[1] = bottom - height;
           }
         }
       }
