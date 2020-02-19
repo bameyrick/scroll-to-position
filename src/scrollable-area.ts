@@ -41,7 +41,7 @@ export class ScrollableArea {
 
   public ScrollToTarget(target: Position | HTMLElement, options?: IScrollableAreaOptions): Promise<void> {
     if (!Array.isArray(target)) {
-      target = [target.offsetLeft, target.offsetTop];
+      target = [target.offsetLeft, target.offsetTop, target.offsetLeft + target.offsetWidth, target.offsetTop + target.offsetHeight];
     }
 
     const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, onlyScrollIfNotInView } = <IMergedOptions>{
@@ -65,7 +65,18 @@ export class ScrollableArea {
       const x = this.scrollTo[0] - this.scrollX;
       const y = this.scrollTo[1] - this.scrollY;
 
-      shouldScroll = x > width || x < 0 || y > height || y < 0;
+      const topInView = x > width || x < 0 || y > height || y < 0;
+
+      if (target.length === 2) {
+        shouldScroll = topInView;
+      } else {
+        const right = x + target[2];
+        const bottom = y + target[3];
+
+        const bottomInView = right > width || right < 0 || bottom > height || bottom < 0;
+
+        shouldScroll = topInView || bottomInView;
+      }
     }
 
     return new Promise((resolve, reject) => {
