@@ -81,11 +81,11 @@ export class ScrollableArea {
 
         if (shouldScroll) {
           if (this.scrollTo[0] > this.scrollX && rightNotInView) {
-            this.scrollTo[0] = right - width;
+            this.scrollTo[0] = target[2] + offset[0] - width;
           }
 
           if (this.scrollTo[1] > this.scrollY && bottomNotInView) {
-            this.scrollTo[1] = bottom - height;
+            this.scrollTo[1] = target[3] + offset[1] - height;
           }
         }
       }
