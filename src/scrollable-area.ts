@@ -1,7 +1,7 @@
 import { AddTick } from 'tick-manager';
 import { GetViewportDetails } from 'viewport-details';
 import { PreventScrolling, ReEnableScrolling } from 'prevent-scrolling';
-import * as Easings from 'js-easing-functions';
+import * as EasingFunctions from 'js-easing-functions';
 
 import { Position, IScrollableAreaOptions, IMergedOptions, Easing } from './models';
 import { USER_SCROLL_EVENTS } from './user-scroll-events';
@@ -16,6 +16,7 @@ const defaultOptions: IScrollableAreaOptions = {
   cancelOnUserScroll: true,
   animate: true,
   autoDurationMultiplier: 2,
+  onlyScrollIfNotInView: false,
 };
 
 export class ScrollableArea {
@@ -43,20 +44,31 @@ export class ScrollableArea {
       target = [target.offsetLeft, target.offsetTop];
     }
 
-    const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier } = <IMergedOptions>{
+    const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, onlyScrollIfNotInView } = <IMergedOptions>{
       ...defaultOptions,
       ...options,
     };
 
     this.setScrollPosition();
 
-    this.easing = Easings[easing];
+    this.easing = EasingFunctions[easing];
 
     this.scrollFrom = [this.scrollX, this.scrollY];
     this.scrollTo = [target[0] + offset[0], target[1] + offset[1]];
 
+    let shouldScroll = true;
+
+    if (onlyScrollIfNotInView) {
+      const rect = this.scrollContainer instanceof Window ? this.getWindowDomRect() : this.scrollContainer.getBoundingClientRect();
+
+      const x = this.scrollTo[0];
+      const y = this.scrollTo[1];
+
+      shouldScroll = x < rect.left || x > rect.right || y < rect.top || y > rect.bottom;
+    }
+
     return new Promise((resolve, reject) => {
-      if (this.scrollFrom === this.scrollTo) {
+      if (!shouldScroll || this.scrollFrom === this.scrollTo) {
         resolve();
       } else {
         this.scrolling = true;
@@ -64,8 +76,8 @@ export class ScrollableArea {
         this.reject = reject;
 
         if (animate) {
-          let scrollHeight;
-          let scrollWidth;
+          let scrollHeight: number;
+          let scrollWidth: number;
 
           if (this.scrollContainer instanceof Window) {
             const viewport = GetViewportDetails();
@@ -125,8 +137,8 @@ export class ScrollableArea {
       this.scrollX = win.pageXOffset;
       this.scrollY = win.pageYOffset;
     } else {
-      this.scrollX = (<HTMLElement>this.scrollContainer).scrollLeft;
-      this.scrollY = (<HTMLElement>this.scrollContainer).scrollTop;
+      this.scrollX = this.scrollContainer.scrollLeft;
+      this.scrollY = this.scrollContainer.scrollTop;
     }
   }
 
@@ -171,8 +183,8 @@ export class ScrollableArea {
   private scroll(): void {
     const elapsed = Date.now() - this.timestamp;
 
-    let x;
-    let y;
+    let x: number;
+    let y: number;
 
     if (elapsed < this.duration) {
       x = this.calculateNextPosition(0, elapsed);
@@ -201,5 +213,25 @@ export class ScrollableArea {
     } else {
       return from + this.easing(elapsed, 0, to - from, this.duration);
     }
+  }
+
+  private getWindowDomRect(): DOMRect {
+    const { width, height, scrollX, scrollY } = GetViewportDetails();
+
+    const rect: DOMRect = {
+      x: 0,
+      y: 0,
+      width,
+      height,
+      top: scrollY,
+      right: width + scrollX,
+      bottom: height + scrollY,
+      left: scrollX,
+      toJSON: () => {},
+    };
+
+    rect.toJSON = () => rect;
+
+    return rect;
   }
 }

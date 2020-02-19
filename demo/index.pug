@@ -8,8 +8,6 @@ html
 
         link(rel="stylesheet" href="/styles.css")
 
-        //- style
-        //-     include ./styles.css
     body
         - var i = 0
         while i < 5000
@@ -22,12 +20,24 @@ html
             - i += 50
         .ScrollToControl
             label.ScrollToControl__label Scroll To
-            input.ScrollToControl__input(type="number" min="0" max="5000" step="10")
-            button.ScrollToControl__button(type="button") Go
+            input.ScrollToControl__input.js-position(type="number" min="0" max="5000" step="10")
+            button.ScrollToControl__button.js-button(type="button") Go
+
+            details.ScrollToControl__options
+                summary.ScrollToControl__summary Options
+
+                p
+                    label.ScrollToControl__option
+                        input.js-animate(type="checkbox" checked)
+                        | Animate
+
+                p
+                    label.ScrollToControl__option
+                        input.js-not-in-view(type="checkbox")
+                        | Only scroll if target not fully in view
         
         script(src="/index.js")
         
         if debug
             script
                 | document.write('<script src="//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js" defer></' + 'script>')
-

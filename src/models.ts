@@ -12,6 +12,7 @@ export interface IScrollableAreaOptions {
   cancelOnUserScroll?: boolean;
   animate?: boolean;
   autoDurationMultiplier?: number;
+  onlyScrollIfNotInView?: boolean;
 }
 
 export interface IOptions extends IScrollableAreaOptions {
@@ -25,6 +26,7 @@ export interface IMergedOptions {
   cancelOnUserScroll: boolean;
   animate: boolean;
   autoDurationMultiplier: number;
+  onlyScrollIfNotInView: boolean;
 }
 
 export type Position = [number, number];

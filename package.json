@@ -21,7 +21,7 @@
     "netlify": "yarn tidy-clean && yarn webpack --config webpack.netlify.babel.js",
     "lint": "tslint --project tslint.json",
     "lint-staged": "lint-staged",
-    "tidy-clean": "rm -rf ./dist && rm -rf ./build",
+    "tidy-clean": "rimraf ./dist && rimraf ./build",
     "dedupe-deps": "npx yarn-deduplicate yarn.lock && yarn"
   },
   "lint-staged": {
@@ -49,7 +49,6 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/register": "^7.4.4",
-    "@types/node": "^12.6.8",
     "autoprefixer": "^9.5.1",
     "babel-eslint": "^10.0.1",
     "chalk": "^2.4.2",
@@ -70,6 +69,7 @@
     "postcss-url": "^8.0.0",
     "prettier": "^1.17.0",
     "pug-html-loader": "^1.1.5",
+    "rimraf": "^3.0.2",
     "sass-lint": "^1.13.1",
     "sass-loader": "^7.1.0",
     "ts-loader": "^5.4.5",
@@ -82,6 +82,9 @@
     "webpack-fix-style-only-entries": "^0.2.1",
     "webpack-livereload-plugin": "^2.2.0",
     "webpack-merge": "^4.2.1"
+  },
+  "peerDependencies": {
+    "@types/node": "^12.6.8"
   },
   "dependencies": {
     "js-easing-functions": "^1.0.2",

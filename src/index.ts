@@ -25,4 +25,4 @@ export function ScrollTo(target: Position | HTMLElement, options?: IOptions): Pr
   });
 }
 
-export { Position, IOptions } from './models';
+export { Position, IOptions, Easing } from './models';
