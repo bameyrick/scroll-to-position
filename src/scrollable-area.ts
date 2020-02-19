@@ -70,8 +70,8 @@ export class ScrollableArea {
       if (target.length === 2) {
         shouldScroll = topInView;
       } else {
-        const right = x + target[2];
-        const bottom = y + target[3];
+        const right = target[2] + offset[0] - this.scrollX;
+        const bottom = target[3] + offset[1] - this.scrollY;
 
         const bottomInView = right > width || right < 0 || bottom > height || bottom < 0;
 
