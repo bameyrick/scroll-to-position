@@ -4,6 +4,10 @@ Animate scroll to either an x, y, or x and y position in any scrollable viewport
 
 [**Demo**](https://scroll-to-position.netlify.com/)
 
+[![GitHub release](https://img.shields.io/github/release/bameyrick/scroll-to-position.svg)](https://github.com/bameyrick/scroll-to-position/releases)
+[![Build Status](https://travis-ci.com/bameyrick/scroll-to-position.svg?branch=master)](https://travis-ci.com/bameyrick/scroll-to-position)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5c22654eec6b4e92b80c40a19d3a26fa)](https://www.codacy.com/manual/bameyrick/scroll-to-position)
+
 ## Install
 
 You can install via npm or yarn.
