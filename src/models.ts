@@ -5,7 +5,7 @@ export interface IScrollableArea {
   element: HTMLElement | Window;
 }
 
-export interface IScrollableAreaOptions {
+export interface ScrollableAreaOptions {
   offset?: Position;
   duration?: DurationRange | number;
   easing?: Easing;
@@ -15,11 +15,11 @@ export interface IScrollableAreaOptions {
   onlyScrollIfNotInView?: boolean;
 }
 
-export interface IOptions extends IScrollableAreaOptions {
+export interface Options extends ScrollableAreaOptions {
   scrollContainer?: HTMLElement | Window;
 }
 
-export interface IMergedOptions {
+export interface MergedOptions {
   offset: Position;
   duration: DurationRange | number;
   easing: Easing;

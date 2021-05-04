@@ -1,15 +1,15 @@
 import { AddTick } from 'tick-manager';
-import { GetViewportDetails } from 'viewport-details';
+import { getViewportDetails } from 'viewport-details';
 import { PreventScrolling, ReEnableScrolling } from 'prevent-scrolling';
 import * as EasingFunctions from 'js-easing-functions';
 
-import { Position, IScrollableAreaOptions, IMergedOptions, Easing } from './models';
+import { Position, ScrollableAreaOptions, MergedOptions, Easing } from './models';
 import { USER_SCROLL_EVENTS } from './user-scroll-events';
 
 const win = window;
 const body = document.body;
 
-const defaultOptions: IScrollableAreaOptions = {
+const defaultOptions: ScrollableAreaOptions = {
   offset: [0, 0],
   duration: [200, 5000],
   easing: Easing.easeInOutQuart,
@@ -39,7 +39,7 @@ export class ScrollableArea {
     this.cancelScroll = this.cancelScroll.bind(this);
   }
 
-  public ScrollToTarget(target: Position | HTMLElement, options?: IScrollableAreaOptions): Promise<void> {
+  public ScrollToTarget(target: Position | HTMLElement, options?: ScrollableAreaOptions): Promise<void> {
     const scrollContainerOffsetLeft = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetLeft;
     const scrollContainerOffsetTop = this.scrollContainer instanceof Window ? 0 : this.scrollContainer.offsetTop;
 
@@ -52,7 +52,7 @@ export class ScrollableArea {
       ];
     }
 
-    const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, onlyScrollIfNotInView } = <IMergedOptions>{
+    const { offset, easing, animate, duration, cancelOnUserScroll, autoDurationMultiplier, onlyScrollIfNotInView } = <MergedOptions>{
       ...defaultOptions,
       ...options,
     };
@@ -68,7 +68,7 @@ export class ScrollableArea {
 
     if (onlyScrollIfNotInView) {
       const { width, height } =
-        this.scrollContainer instanceof Window ? GetViewportDetails() : this.scrollContainer.getBoundingClientRect();
+        this.scrollContainer instanceof Window ? getViewportDetails() : this.scrollContainer.getBoundingClientRect();
 
       const x = this.scrollTo[0] - this.scrollX;
       const y = this.scrollTo[1] - this.scrollY;
@@ -112,7 +112,7 @@ export class ScrollableArea {
           let scrollWidth: number;
 
           if (this.scrollContainer instanceof Window) {
-            const viewport = GetViewportDetails();
+            const viewport = getViewportDetails();
             scrollWidth = body.offsetWidth - viewport.width;
             scrollHeight = body.offsetHeight - viewport.heightCollapsedControls;
           } else {
