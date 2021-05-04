@@ -1,10 +1,11 @@
 language: node_js
-version: '~> 1.0.0'
 node_js:
 - 10.15.3
 cache: yarn
 jobs:
   include:
+  - stage: test
+    script: yarn lint
   - stage: npm-bundle
     script: yarn build && npm version $TRAVIS_BRANCH --allow-same-version --allow-empty
     deploy:
@@ -16,5 +17,7 @@ jobs:
       on:
         tags: true
 stages:
-- name: npm-bundle
-  if: tag IS present
+  - name: test
+    if: tag IS NOT present
+  - name: npm-bundle
+    if: tag IS present

@@ -1,16 +1,16 @@
-import { IScrollableArea, Position, IOptions } from './models';
+import { IScrollableArea, Position, Options } from './models';
 import { ScrollableArea } from './scrollable-area';
 
 const scrollableAreas: IScrollableArea[] = [];
 
-export function ScrollTo(target: Position | HTMLElement, options?: IOptions): Promise<void> {
+export function ScrollTo(target: Position | HTMLElement, options?: Options): Promise<void> {
   return new Promise((resolve, reject) => {
     const scrollContainer = options ? options.scrollContainer || window : window;
 
     let scrollableArea = scrollableAreas.find(a => a.element === scrollContainer);
 
     if (!scrollableArea) {
-      scrollableArea = <IScrollableArea>{
+      scrollableArea = {
         element: scrollContainer,
         class: new ScrollableArea(scrollContainer),
       };
@@ -25,4 +25,4 @@ export function ScrollTo(target: Position | HTMLElement, options?: IOptions): Pr
   });
 }
 
-export { Position, IOptions, Easing } from './models';
+export { Position, Options as IOptions, Easing } from './models';

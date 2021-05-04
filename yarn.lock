@@ -6587,14 +6587,14 @@ prettier@^1.17.0:
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
 
 prevent-overscrolling@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/prevent-overscrolling/-/prevent-overscrolling-1.1.0.tgz#95ee3d35633b67644497227dc45af0cb35b38423"
-  integrity sha1-le49NWM7Z2RElyJ9xFrwyzWzhCM=
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/prevent-overscrolling/-/prevent-overscrolling-1.1.1.tgz#57410e7c886a60500125b33fe733a9b63e8eccc6"
+  integrity sha512-7y1CmAjAxY7Nrn9IFPqseFLtFvaItJpJMvFSbvxHk9AxeN7tUopcPiG1gBZAeAmkIUSyg5ueJDNkcIVEfxtS0Q==
 
-prevent-scrolling@^1.2.1:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/prevent-scrolling/-/prevent-scrolling-1.3.2.tgz#0d71b0125f6324d4f796cddad0ffe5c9f701f5bf"
-  integrity sha512-z9hjAH2wvVomr5ZkMhVbWWxgsloSWmNjS56Uu4xUG+Ol79SUbwEPwdfQ16vHatPBElzeGXEvejq1HJKEylLQ9A==
+prevent-scrolling@^1.3.3:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/prevent-scrolling/-/prevent-scrolling-1.3.6.tgz#4362e1b984e98828969e3d9b16befd72f632fbc0"
+  integrity sha512-m9YXapRN7boBLvVGGAJqNCghBbxTxwJlWcuk7LVtkLH8nUjtZgAXmzqrkpHILOQ/dc7jzbsGre1CYTwGdp4qUw==
   dependencies:
     prevent-overscrolling "^1.1.0"
     ua-parser-js "^0.7.20"
@@ -8347,9 +8347,9 @@ typescript@^4.2.4:
   integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
 
 ua-parser-js@^0.7.20:
-  version "0.7.20"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.20.tgz#7527178b82f6a62a0f243d1f94fd30e3e3c21098"
-  integrity sha512-8OaIKfzL5cpx8eCMAhhvTlft8GYF8b2eQr6JkCyVdrgjcytyOmPCXrqXFcUnhonRpLlh5yxEZVohm6mzaowUOw==
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 uglify-js@^2.6.1:
   version "2.8.29"
@@ -8579,11 +8579,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-viewport-details@^1.0.1:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/viewport-details/-/viewport-details-1.5.0.tgz#811d2fe60a075f5fde0ce093ab7a9d40f60eb89e"
-  dependencies:
-    tick-manager "^1.0.3"
+viewport-details@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/viewport-details/-/viewport-details-2.0.0.tgz#e3ea0c832dce2d6fe61467065a1ac5ed170d4fab"
+  integrity sha512-vANL04i1+X3+F32YHvh470CfDzGkPybTNtYsrv++QywNPNPtu0j2Z+hmk+Zi69DqZobWqlAU7uJzLe/eQq+3HQ==
 
 vm-browserify@^1.0.1:
   version "1.1.2"
