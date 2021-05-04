@@ -24,7 +24,6 @@ function getIP() {
   return _interface ? _interface.address : 'localhost';
 }
 
-
 export default merge(common, {
   devServer: {
     contentBase: path.join(__dirname, 'build'),
@@ -32,7 +31,7 @@ export default merge(common, {
     port,
     after: function() {
       setTimeout(() => {
-        console.log(chalk.blue.bold('======================================='));
+        console.log(chalk.blue.bold('\n======================================='));
         console.log(chalk.bold.cyan('Server started'));
         console.log(`${chalk.bold.cyan('Local:')} ${chalk.bold.green(`http://localhost:${port}`)}`);
         console.log(`${chalk.bold.cyan('Remote:')} ${chalk.bold.green(`http://${getIP()}:${port}`)}`);
@@ -41,9 +40,9 @@ export default merge(common, {
     },
     stats: 'errors-only',
     headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
+      'Access-Control-Allow-Origin': '*',
+    },
   },
 
-  plugins: [new LiveReloadPlugin()]
+  plugins: [new LiveReloadPlugin()],
 });
