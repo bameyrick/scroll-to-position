@@ -1,11 +1,11 @@
 import * as path from 'path';
 
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { NoEmitOnErrorsPlugin, ProgressPlugin, NamedModulesPlugin } from 'webpack';
+import { NoEmitOnErrorsPlugin, ProgressPlugin } from 'webpack';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
-import FixStyleOnlyEntriesPlugin from 'webpack-fix-style-only-entries';
+import RemoveEmptyScriptsPlugin from 'webpack-remove-empty-scripts';
 
-import postCssPlugins from './postcss.config';
+import postcssPlugins from './postcss.config';
 
 export default function mode(mode) {
   const devMode = mode === 'development';
@@ -44,7 +44,7 @@ export default function mode(mode) {
         },
         {
           test: /\.pug$/,
-          loaders: [
+          rules: [
             {
               loader: 'file-loader',
               options: {
@@ -70,21 +70,25 @@ export default function mode(mode) {
               loader: 'css-loader',
               options: {
                 sourceMap: false,
-                importLoaders: 1
               }
             },
             {
               loader: 'postcss-loader',
               options: {
-                indent: 'postcss',
-                plugins: postCssPlugins
+                postcssOptions: {
+                  ident: 'postcss',
+                  plugins: postcssPlugins,
+                },
               }
             },
             {
               loader: 'sass-loader',
               options: {
                 sourceMap: false,
-                precision: 8
+                sassOptions: {
+                  precision: 8,
+                  includePaths: [path.resolve('./src/styles')],
+                },
               }
             }
           ]
@@ -101,18 +105,17 @@ export default function mode(mode) {
         exclude: /(\\|\/)node_modules(\\|\/)/,
         failOnError: false,
       }),
-  
-      new NamedModulesPlugin(),
 
       new MiniCssExtractPlugin({
         filename: '[name].css',
         chunkFilename: '[id].css'
       }),
 
-      new FixStyleOnlyEntriesPlugin({
-        extensions: ['scss', 'pug', 'html', 'css'],
-        silent: true
-      }),
-    ]
+      new RemoveEmptyScriptsPlugin(),
+    ],
+    
+    optimization: {
+      moduleIds: 'named',
+    },
   };
 }

@@ -6,7 +6,6 @@ import * as EasingFunctions from 'js-easing-functions';
 import { Position, ScrollableAreaOptions, MergedOptions, Easing } from './models';
 import { USER_SCROLL_EVENTS } from './user-scroll-events';
 
-const win = window;
 const body = document.body;
 
 const defaultOptions: ScrollableAreaOptions = {
@@ -28,15 +27,15 @@ export class ScrollableArea {
   private timestamp: number;
   private scrollX: number;
   private scrollY: number;
-  private easing: Function;
-  private resolve: Function;
-  private reject: Function;
+  private easing: (elapsed: number, initialValue: number, amountOfChange: number, duration: number, s?: number) => number;
+  private resolve: () => void;
+  private reject: () => void;
   private userScrollingPrevented: boolean = false;
 
   constructor(private scrollContainer: HTMLElement | Window) {
     // Hack to ensure event listeners are removed correctly and their functions retain context of this. See:
     // https://stackoverflow.com/questions/11565471/removing-event-listener-which-was-added-with-bind#answer-33386309
-    this.cancelScroll = this.cancelScroll.bind(this);
+    this.cancelScroll = this.cancelScroll.bind(this) as () => void;
   }
 
   public ScrollToTarget(target: Position | HTMLElement, options?: ScrollableAreaOptions): Promise<void> {
@@ -144,10 +143,11 @@ export class ScrollableArea {
 
           if (!this.ticking) {
             this.ticking = true;
-            AddTick(this.tick.bind(this));
+            AddTick(this.tick.bind(this) as () => void);
           }
         } else {
-          (<any>this.scrollContainer.scrollTo)(...this.scrollTo);
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
+          this.scrollContainer.scrollTo(...(this.scrollTo as any));
 
           this.onScrollEnd();
         }
@@ -161,13 +161,13 @@ export class ScrollableArea {
 
   private set scrolling(scrolling: boolean) {
     this._scrolling = scrolling;
-    (<any>win).autoScrolling = scrolling;
+    window['autoScrolling'] = scrolling;
   }
 
   private setScrollPosition(): void {
     if (this.scrollContainer instanceof Window) {
-      this.scrollX = win.pageXOffset;
-      this.scrollY = win.pageYOffset;
+      this.scrollX = window.pageXOffset;
+      this.scrollY = window.pageYOffset;
     } else {
       this.scrollX = this.scrollContainer.scrollLeft;
       this.scrollY = this.scrollContainer.scrollTop;
@@ -176,12 +176,14 @@ export class ScrollableArea {
 
   private addEventListeners(): void {
     USER_SCROLL_EVENTS.forEach(event => {
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.scrollContainer.addEventListener(event, this.cancelScroll);
     });
   }
 
   private removeEventListeners(): void {
     USER_SCROLL_EVENTS.forEach(event => {
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       this.scrollContainer.removeEventListener(event, this.cancelScroll);
     });
   }
