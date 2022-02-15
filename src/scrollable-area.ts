@@ -146,7 +146,8 @@ export class ScrollableArea {
             AddTick(this.tick.bind(this) as () => void);
           }
         } else {
-          this.scrollContainer.scrollTo(...this.scrollTo);
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
+          this.scrollContainer.scrollTo(...(this.scrollTo as any));
 
           this.onScrollEnd();
         }
