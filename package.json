@@ -86,7 +86,7 @@
   },
   "dependencies": {
     "js-easing-functions": "^1.0.2",
-    "prevent-scrolling": "^1.3.7",
+    "prevent-scrolling": "^1.3.8",
     "tick-manager": "^1.0.3",
     "viewport-details": "^3.0.2"
   }
