@@ -2,8 +2,15 @@
   "name": "scroll-to-position",
   "version": "1.5.0",
   "description": "Animate scroll to either an x, y, or x and y position in any scrollable viewport with customisable easing",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/mjs/index.js",
+  "types": "./dist/mjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "author": "Ben Meyrick <bameyrick@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -17,7 +24,7 @@
   },
   "scripts": {
     "start": "yarn tidy-clean && webpack serve --host 0.0.0.0 --port 3000 --config webpack.dev.babel.js",
-    "build": "yarn tidy-clean && yarn lint && tsc --p tsconfig.dist.json --outDir dist/",
+    "build": "yarn tidy-clean && yarn lint && tsc -p tsconfig.mjs.json && cpy package.mjs.json dist/mjs --rename package.json && tsc -p tsconfig.cjs.json && cpy package.cjs.json dist/cjs --rename package.json",
     "netlify": "yarn tidy-clean && yarn webpack --config webpack.netlify.babel.js",
     "lint": "eslint src/**/*.ts --fix",
     "lint-staged": "lint-staged",
@@ -54,6 +61,7 @@
     "@typescript-eslint/parser": "^5.12.0",
     "autoprefixer": "^10.4.2",
     "circular-dependency-plugin": "^5.2.2",
+    "cpy-cli": "^4.1.0",
     "css-loader": "^6.6.0",
     "cssnano": "^5.0.17",
     "eslint": "^8.9.0",
