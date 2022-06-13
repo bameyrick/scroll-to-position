@@ -5262,19 +5262,19 @@ prettier@^2.5.1:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
   integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
 
-prevent-overscrolling@^1.1.3:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/prevent-overscrolling/-/prevent-overscrolling-1.1.4.tgz#04f895837a057fc1d49a266078d64e6f71911a8d"
-  integrity sha512-1R+DDVUbHC6zTVcU4/I1rPmFQXZJ89sJ+xFrR91dGspUFYdn/Ji4VPMCESr7BPR7h0i60VjcELQD5mRgJkVHng==
+prevent-overscrolling@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/prevent-overscrolling/-/prevent-overscrolling-1.1.5.tgz#c141c35c41e067579640d682216a6a6771e41a9b"
+  integrity sha512-XFlMZGkftkd/HyVto9Ic0v+sCwqSTIYqg86s+4+HyBWE43HWlJhm7GXoxsrZhznsXsMkJc9NLOe4WglQu67hfQ==
 
-prevent-scrolling@^1.3.9:
-  version "1.3.9"
-  resolved "https://registry.yarnpkg.com/prevent-scrolling/-/prevent-scrolling-1.3.9.tgz#aa592749339554a82d7b07e0ab1ec403af39f76d"
-  integrity sha512-wH1sK7snT5ZkwFtqdyY/n3eaXUZrENf4jG9/XUw3sKjaaHqu9jsZG3Dbk3k5DSD//0hgbBobJjuA/Z6ELV+yWw==
+prevent-scrolling@^1.3.10:
+  version "1.3.10"
+  resolved "https://registry.yarnpkg.com/prevent-scrolling/-/prevent-scrolling-1.3.10.tgz#4334233be7c32b69000feaa1889c39037f1fe0c6"
+  integrity sha512-9m+LPtIKZHL4gI6PF4b/qmWn8sVOAr+XtTD9BXwnLqNHaXytPXK+tUdndRgbtPnQmz8UqmzRYb0wJbd+xajJwg==
   dependencies:
     "@qntm-code/utils" "^2.7.1"
     enum-keys-values-entries "^1.0.3"
-    prevent-overscrolling "^1.1.3"
+    prevent-overscrolling "^1.1.5"
     ua-parser-js "^0.7.20"
 
 process-nextick-args@~2.0.0:
@@ -6621,7 +6621,7 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-viewport-details@^3.0.1, viewport-details@^3.0.2:
+viewport-details@^3.0.1, viewport-details@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/viewport-details/-/viewport-details-3.0.3.tgz#af1d3f910ed78268efbffa76a0bfbb9ed2477b68"
   integrity sha512-GuEeyNlL2RXzP35lbAB5XR8oEkmaT1CZQsINWU/bp6I/IJV4eDQHwSr6y8wdntW7UYJkxos6MuFhKzIohjHIHg==
