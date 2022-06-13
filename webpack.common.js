@@ -18,7 +18,7 @@ export default function mode(mode) {
     entry: {
       index: ['./index.ts'],
       html: ['./index.pug'],
-      styles: ['./styles.scss']
+      styles: ['./styles.scss'],
     },
 
     output: {
@@ -26,7 +26,7 @@ export default function mode(mode) {
     },
 
     resolve: {
-      extensions: ['.ts', '.js', '.pug'],
+      extensions: ['.ts', '.js', '.mjs', '.pug'],
       modules: ['./node_modules'],
       symlinks: true,
     },
@@ -34,13 +34,19 @@ export default function mode(mode) {
     resolveLoader: {
       modules: ['./node_modules'],
     },
-    
+
     module: {
       rules: [
         {
+          test: /\.m?js/,
+          resolve: {
+            fullySpecified: false,
+          },
+        },
+        {
           test: /\.tsx?$/,
           exclude: /(node_modules)/,
-          use: ['ts-loader']
+          use: ['ts-loader'],
         },
         {
           test: /\.pug$/,
@@ -48,19 +54,19 @@ export default function mode(mode) {
             {
               loader: 'file-loader',
               options: {
-                name: '[path][name].html'
-              }
+                name: '[path][name].html',
+              },
             },
             {
               loader: 'pug-html-loader',
               options: {
                 doctype: 'html',
                 data: {
-                  debug: devMode
-                }
-              }
-            }
-          ]
+                  debug: devMode,
+                },
+              },
+            },
+          ],
         },
         {
           test: /\.scss$/,
@@ -70,7 +76,7 @@ export default function mode(mode) {
               loader: 'css-loader',
               options: {
                 sourceMap: false,
-              }
+              },
             },
             {
               loader: 'postcss-loader',
@@ -79,7 +85,7 @@ export default function mode(mode) {
                   ident: 'postcss',
                   plugins: postcssPlugins,
                 },
-              }
+              },
             },
             {
               loader: 'sass-loader',
@@ -89,11 +95,11 @@ export default function mode(mode) {
                   precision: 8,
                   includePaths: [path.resolve('./src/styles')],
                 },
-              }
-            }
-          ]
-        }
-      ]
+              },
+            },
+          ],
+        },
+      ],
     },
 
     plugins: [
@@ -108,12 +114,12 @@ export default function mode(mode) {
 
       new MiniCssExtractPlugin({
         filename: '[name].css',
-        chunkFilename: '[id].css'
+        chunkFilename: '[id].css',
       }),
 
       new RemoveEmptyScriptsPlugin(),
     ],
-    
+
     optimization: {
       moduleIds: 'named',
     },
