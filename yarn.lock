@@ -5267,7 +5267,7 @@ prevent-overscrolling@^1.1.3:
   resolved "https://registry.yarnpkg.com/prevent-overscrolling/-/prevent-overscrolling-1.1.4.tgz#04f895837a057fc1d49a266078d64e6f71911a8d"
   integrity sha512-1R+DDVUbHC6zTVcU4/I1rPmFQXZJ89sJ+xFrR91dGspUFYdn/Ji4VPMCESr7BPR7h0i60VjcELQD5mRgJkVHng==
 
-prevent-scrolling@^1.3.8:
+prevent-scrolling@^1.3.9:
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/prevent-scrolling/-/prevent-scrolling-1.3.9.tgz#aa592749339554a82d7b07e0ab1ec403af39f76d"
   integrity sha512-wH1sK7snT5ZkwFtqdyY/n3eaXUZrENf4jG9/XUw3sKjaaHqu9jsZG3Dbk3k5DSD//0hgbBobJjuA/Z6ELV+yWw==
